@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NERVE — Watcher | Player</title>
+  <title>Congratulations, you found me, but now what are you going to do?</title>
   <meta name="description" content="Choose: Watcher to see my socials, or Player to ask for a ride." />
-  <meta property="og:title" content="NERVE — Watcher | Player" />
+  <meta property="og:title" content="Congratulations, you found me, but now what are you going to do?" />
   <meta property="og:description" content="Watcher: Instagram & YouTube · Player: Ask for a ride" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://DJayS1K.github.io/" />
@@ -18,56 +18,91 @@
       text-align: center;
       padding: 50px 20px;
     }
+
     h1 {
       color: yellow;
-      font-size: 3em;
-      margin-bottom: 20px;
+      font-size: 2em;
+      margin-bottom: 50px;
     }
+
     .button {
-      display: inline-block;
-      margin: 20px;
-      padding: 15px 30px;
-      font-size: 1.5em;
+      display: block;
+      margin: 20px auto;
+      padding: 20px 50px;
+      font-size: 3em;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 15px;
       text-decoration: none;
+      width: 300px;
+      transition: transform 0.3s;
+      border: 5px solid;
     }
+
+    /* Pulsating animation */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
     .watcher {
-      color: red;
+      color: limegreen;
+      border-color: limegreen;
+      animation: pulse 1s infinite;
     }
+
     .player {
-      color: purple;
+      color: red;
+      border-color: red;
+      animation: pulse 1s infinite;
     }
+
     .hidden {
       display: none;
+      margin-top: 30px;
     }
+
     .links a {
       display: block;
       margin: 10px 0;
       color: white;
       text-decoration: none;
-      font-size: 1.2em;
+      font-size: 1.5em;
+    }
+
+    .links a span {
+      margin-right: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>NERVE</h1>
+  <h1>Congratulations, you found me,<br>but now what are you going to do?</h1>
+
   <div class="options">
-    <a href="#" class="button watcher" onclick="showWatcher()">Watcher</a>
-    <a href="#" class="button player" onclick="showPlayer()">Player</a>
+    <a href="#" class="button watcher" onclick="showWatcher()">WATCHER</a>
+    <a href="#" class="button player" onclick="showPlayer()">PLAYER</a>
   </div>
 
   <div id="watcherLinks" class="hidden">
-    <h2>My Socials</h2>
+    <h2>👇 Click on me 👇</h2>
     <div class="links">
-      <a href="https://instagram.com/DJay_S1K" target="_blank">Instagram: @DJay_S1K</a>
-      <a href="https://youtube.com/@DJay_S1K" target="_blank">YouTube: DJay_S1K</a>
+      <a href="https://youtube.com/@djay_s1k?si=h4lDB_CA4XJtaIdX" target="_blank">
+        <span>📺</span>@djay_s1k
+      </a>
+      <a href="https://www.instagram.com/djay_s1k?igsh=dHZ0NmNxcHYxNmNh&utm_source=qr" target="_blank">
+        <span>📸</span>@djay_s1k
+      </a>
     </div>
   </div>
 
   <div id="playerText" class="hidden">
     <h2>Ask for a ride</h2>
+    <div class="links">
+      <a href="https://www.instagram.com/djay_s1k?igsh=dHZ0NmNxcHYxNmNh&utm_source=qr" target="_blank">
+        <span>📸</span>@djay_s1k
+      </a>
+    </div>
   </div>
 
   <script>
@@ -75,6 +110,7 @@
       document.getElementById("watcherLinks").classList.remove("hidden");
       document.getElementById("playerText").classList.add("hidden");
     }
+
     function showPlayer() {
       document.getElementById("playerText").classList.remove("hidden");
       document.getElementById("watcherLinks").classList.add("hidden");
