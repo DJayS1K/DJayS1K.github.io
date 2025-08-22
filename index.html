@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NERVE — Watcher | Player</title>
+  <meta name="description" content="Choose: Watcher to see my socials, or Player to ask for a ride." />
+  <meta property="og:title" content="NERVE — Watcher | Player" />
+  <meta property="og:description" content="Watcher: Instagram & YouTube · Player: Ask for a ride" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOURUSERNAME.github.io/" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 {
+      color: yellow;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      margin: 20px;
+      padding: 15px 30px;
+      font-size: 1.5em;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .watcher {
+      color: red;
+    }
+    .player {
+      color: purple;
+    }
+    .hidden {
+      display: none;
+    }
+    .links a {
+      display: block;
+      margin: 10px 0;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>NERVE</h1>
+  <div class="options">
+    <a href="#" class="button watcher" onclick="showWatcher()">Watcher</a>
+    <a href="#" class="button player" onclick="showPlayer()">Player</a>
+  </div>
+
+  <div id="watcherLinks" class="hidden">
+    <h2>My Socials</h2>
+    <div class="links">
+      <a href="https://instagram.com/DJay_S1K" target="_blank">Instagram: @DJay_S1K</a>
+      <a href="https://youtube.com/@DJay_S1K" target="_blank">YouTube: DJay_S1K</a>
+    </div>
+  </div>
+
+  <div id="playerText" class="hidden">
+    <h2>Ask for a ride</h2>
+  </div>
+
+  <script>
+    function showWatcher() {
+      document.getElementById("watcherLinks").classList.remove("hidden");
+      document.getElementById("playerText").classList.add("hidden");
+    }
+    function showPlayer() {
+      document.getElementById("playerText").classList.remove("hidden");
+      document.getElementById("watcherLinks").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
