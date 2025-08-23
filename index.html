@@ -21,70 +21,60 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+
+      /* BACKGROUND MOSAIC */
+      background-image: url("https://imgur.com/a/3vsiee8"), 
+                        url("https://imgur.com/a/G1W4xFn"),
+                        url("https://imgur.com/a/DwL9BMM");
+                        url("https://imgur.com/a/33f03Lq");
+                        url("https://imgur.com/a/mrDwlO1");
+                        url("https://imgur.com/a/5iFKTVJ");
+      background-repeat: repeat;
+      background-size: 200px 200px; /* size of each tile */
+      opacity: 0.12; /* subtle */
     }
 
-    /* Background mosaic */
+    /* SPARKLE EFFECT */
     body::before {
       content: "";
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: url("6DA20DA6-685A-4B8A-9D12-5AE570125BA8.jpeg"),
-                  url("F55E853F-76E4-4E58-AF24-E56C7DFF900D.jpeg"),
-                  url("3328473D-5D37-469E-BFDE-A01B6F5B9B35.jpeg");
-      background-size: 200px 200px;
-      background-position: center;
-      background-repeat: repeat;
-      opacity: 0.07;
-      z-index: 0;
+      top:0; left:0;
+      width:100%; height:100%;
+      background-image: radial-gradient(circle, #fff 2px, transparent 2px);
+      background-size: 150px 150px;
+      animation: sparkle 6s linear infinite;
+      z-index: 1;
+      opacity: 0.4;
+      pointer-events: none;
     }
 
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 60px;
+    @keyframes sparkle {
+      from { background-position: 0 0; }
+      to   { background-position: 300px 300px; }
+    }
+
+    header, .options, .page {
       z-index: 2;
       position: relative;
     }
 
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2em;
+      font-size: 2.5em;
       text-align: center;
-      line-height: 1.2;
       color: #ff9900;
-      text-shadow: 0 0 10px #ff9900, 0 0 20px #ff6600;
+      text-shadow: 0 0 12px #ff9900, 0 0 25px #ff6600;
+      margin-top: 60px;
       margin-bottom: 60px;
-      position: relative;
-    }
-
-    /* Sparkles */
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #fff;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: sparkle 1.5s linear forwards;
-    }
-    @keyframes sparkle {
-      from { opacity: 1; transform: scale(1) translate(0,0); }
-      to { opacity: 0; transform: scale(0) translate(var(--x), var(--y)); }
     }
 
     .options {
       display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 2;
-      position: relative;
     }
 
     .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 20px;
       padding: 25px 60px;
       font-size: 2.5em;
@@ -96,8 +86,8 @@
       width: 320px;
       transition: transform 0.3s, box-shadow 0.3s;
       animation: pulse 1.2s infinite;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
     }
 
     @keyframes pulse {
@@ -108,13 +98,13 @@
     .watcher {
       color: #00ff90;
       border-color: #00ff90;
-      box-shadow: 0 0 20px #00ff90;
+      box-shadow: 0 0 25px #00ff90;
     }
 
     .player {
       color: #ff0033;
       border-color: #ff0033;
-      box-shadow: 0 0 20px #ff0033;
+      box-shadow: 0 0 25px #ff0033;
     }
 
     .page {
@@ -128,9 +118,7 @@
       align-items: center;
       justify-content: center;
       padding: 40px;
-      z-index: 3;
-      overflow-y: auto;
-      background: #0d0d0d;
+      background: rgba(13,13,13,0.95);
     }
 
     .page.active { display: flex; }
@@ -176,33 +164,16 @@
       text-align: center;
     }
 
-    .monster-section {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .monster-section img {
-      width: 80px;
-      margin: 0 10px;
-      animation: clink 1s infinite alternate;
-    }
-
-    @keyframes clink {
-      from { transform: rotate(-5deg) scale(1); }
-      to { transform: rotate(5deg) scale(1.05); }
-    }
-
     @media (max-width: 480px) {
       .button { font-size: 1.8em; padding: 20px 40px; width: 260px; }
       #playerPage h2 { font-size: 2em; }
     }
-
   </style>
 </head>
 <body>
 
   <header>
-    <h1 id="sparkleText">Congratulations, you found me!</h1>
+    <h1>Congratulations, you found me!</h1>
   </header>
 
   <div class="options">
@@ -219,7 +190,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
         @djay_s1k
       </a>
-      <a href="https://www.instagram.com/djay_s1k?igsh=dHZ0NmNxcHYxNmNh&utm_source=qr" target="_blank">
+      <a href="https://www.instagram.com/djay_s1k" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         @djay_s1k
       </a>
@@ -229,15 +200,9 @@
   <!-- Player page -->
   <div id="playerPage" class="page">
     <div class="back-btn" onclick="closePage('playerPage')">← Back</div>
-    <h2>Ask for a ride<br>OR<br>Buy me a Monster<br>And I will take a picture</h2>
-
-    <div class="monster-section">
-      <img src="https://images.unsplash.com/photo-1623251842431-8a863deec95c?w=400" alt="Monster White">
-      <img src="https://images.unsplash.com/photo-1606813902563-3b16ba5e6a4d?w=400" alt="Monster Orange Dreamsicle">
-    </div>
-
+    <h2>Ask for a ride</h2>
     <div class="links">
-      <a href="https://www.instagram.com/djay_s1k?igsh=dHZ0NmNxcHYxNmNh&utm_source=qr" target="_blank">
+      <a href="https://www.instagram.com/djay_s1k" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         @djay_s1k
       </a>
@@ -252,20 +217,6 @@
     function closePage(id){
       document.getElementById(id).classList.remove('active');
     }
-
-    // Sparkle effect
-    const sparkleText = document.getElementById('sparkleText');
-    function createSparkle(){
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      sparkle.style.left = (sparkleText.offsetLeft + sparkleText.offsetWidth/2) + 'px';
-      sparkle.style.top = (sparkleText.offsetTop + 20) + 'px';
-      sparkle.style.setProperty('--x', (Math.random()*200-100)+'px');
-      sparkle.style.setProperty('--y', (Math.random()*200-100)+'px');
-      document.body.appendChild(sparkle);
-      setTimeout(()=>sparkle.remove(),1500);
-    }
-    setInterval(createSparkle, 400);
   </script>
 
 </body>
